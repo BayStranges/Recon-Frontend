@@ -1,13 +1,20 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // useNavigate'ı import ediyoruz
 import './Home.css';
 
 const Home = () => {
+  const navigate = useNavigate(); // useNavigate hook'unu kullanıyoruz
+
+  const handleStart = () => {
+    navigate('/register'); // Kayıt ekranına yönlendiriyoruz
+  };
+
   return (
     <div className="home-container">
       <div className="hero-section">
         <h1 className="hero-title">Hoş Geldiniz!</h1>
         <p className="hero-description">Uygulamanızın sunduğu harika özellikleri keşfedin. Hemen başlayın ve hayatınızı kolaylaştırın.</p>
-        <button className="cta-btn">Başlayın</button>
+        <button className="cta-btn" onClick={handleStart}>Başlayın</button> {/* Butona tıklandığında handleStart fonksiyonu çağrılır */}
       </div>
 
       <div className="features-section">
@@ -29,10 +36,10 @@ const Home = () => {
       </div>
 
       <div className="footer-section">
-        <p className="footer-text">2024 © Recon. Tüm hakları saklıdır.</p>
+        <p className="footer-text">2024 © RECON. Tüm hakları saklıdır.</p>
       </div>
     </div>
   );
-}
+};
 
 export default Home;
