@@ -9,6 +9,7 @@
     "cra-template": "1.2.0",
     "crypto": "^1.0.1",
     "crypto-browserify": "^3.12.1",
+    "express": "^4.21.2",
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
     "mongoose": "^8.9.2",
