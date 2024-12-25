@@ -3,6 +3,7 @@ import './App.css';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile'; // Profile bileşenini import ettik
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 function App() {
   const token = localStorage.getItem('token');
@@ -18,6 +19,7 @@ function App() {
       ) : (
         <Profile />
       )}
+      <SpeedInsights/>
     </div>
   );
 }
