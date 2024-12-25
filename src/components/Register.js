@@ -1,58 +1,57 @@
-import React, { useState } from 'react';
-import './Register.css';
+const express = require('express');
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+const app = express();
 
-const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState(''); // Geri bildirim mesajı
-  const [loading, setLoading] = useState(false); // Yükleniyor durumu
+// MongoDB bağlantısı
+mongoose.connect('mongodb+srv://vestia:vestia@vestia.wycebzt.mongodb.net/Vestia', { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+// JSON verilerini alabilmek için middleware
+app.use(express.json());
 
-    // API çağrısı simülasyonu
-    setTimeout(() => {
-      if (email === 'test@example.com') {
-        setMessage('Bu e-posta zaten kayıtlı. Lütfen farklı bir e-posta kullanın.');
-      } else {
-        setMessage('Kayıt başarılı! Hoş geldiniz!');
-      }
-      setLoading(false);
-    }, 1500); // 1.5 saniye bekleyerek simüle ettik
-  };
+// Kullanıcı modelini oluşturuyoruz
+const UserSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true }
+});
 
-  return (
-    <div className="register-container">
-      <h2>Kayıt Ol</h2>
-      {message && <div className="message">{message}</div>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">E-posta</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Şifre</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? 'Yükleniyor...' : 'Kayıt Ol'}
-        </button>
-      </form>
-    </div>
-  );
-};
+// User modelini tanımlıyoruz
+const User = mongoose.model('User', UserSchema);
 
-export default Register;
+// Kayıt API'si
+app.post('/register', async (req, res) => {
+  const { email, password } = req.body;
+
+  // E-posta kontrolü
+  const userExists = await User.findOne({ email });
+  
+  if (userExists) {
+    // E-posta zaten kayıtlıysa, kullanıcıyı bilgilendiriyoruz
+    return res.status(400).json({ message: 'Bu e-posta zaten kayıtlı!' });
+  }
+
+  // Şifreyi hashle
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  // Yeni kullanıcıyı veritabanına kaydet
+  const newUser = new User({
+    email,
+    password: hashedPassword
+  });
+
+  try {
+    await newUser.save(); // Yeni kullanıcıyı veritabanına kaydediyoruz
+    res.status(201).json({ message: 'Kayıt başarılı!' }); // Başarılı kayıt mesajı
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Kayıt sırasında bir hata oluştu.' }); // Hata durumu
+  }
+});
+
+// Sunucuyu başlatıyoruz
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
