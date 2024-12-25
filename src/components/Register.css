@@ -1,76 +1,113 @@
+/* Genel stil */
+body {
+  background-color: #f1f1f1;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Kayıt formu kutusu */
 .register-container {
   width: 100%;
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
+  max-width: 450px;
+  margin: 100px auto;
+  padding: 30px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.6); /* Yarı saydam arka plan */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  color: #fff;
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  transition: all 0.3s ease-in-out;
 }
 
+/* Başlık */
+h2 {
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Input grupları */
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .input-group label {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 5px;
-  color: #555;
+  color: rgba(255, 255, 255, 0.8);
 }
 
+/* Input alanları */
 .input-group input {
   width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 12px;
+  padding: 15px;
   font-size: 16px;
-  color: white;
-  background-color: #4CAF50;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
 }
 
-.submit-btn:hover {
-  background-color: #45a049;
+.input-group input:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  outline: none;
 }
 
+/* Başarı ve hata mesajları */
 .error-message {
-  color: red;
-  text-align: center;
+  color: #e74c3c;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .success-message {
-  color: green;
-  text-align: center;
+  color: #2ecc71;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
+/* Kayıt Ol butonu */
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  color: white;
+  background-color: #3498db; /* Canlı mavi */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Giriş Yap linki */
 .login-link {
   text-align: center;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 .login-link a {
-  color: #4CAF50;
+  color: #3498db;
   text-decoration: none;
+  font-size: 16px;
 }
 
 .login-link a:hover {
   text-decoration: underline;
+}
+
+/* Etkileşimli efektler */
+.register-container:hover {
+  transform: translateY(-10px); /* Hafif hareket efekti */
+}
+
+.register-container:active {
+  transform: translateY(2px); /* Tıklama etkisi */
 }
