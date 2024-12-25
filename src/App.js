@@ -5,7 +5,7 @@ import Register from './components/Register';
 import Profile from './components/Profile'; // Profile bileşenini import ettik
 import { SpeedInsights } from "@vercel/speed-insights/react"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './Home'; // Ana sayfa
+import Home from './components/Home'; // Ana sayfa
 
 function App() {
   const token = localStorage.getItem('token');
