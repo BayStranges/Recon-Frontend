@@ -1,44 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
-const Profile = () => {
+function Profile() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const fetchUserProfile = async () => {
-      const token = localStorage.getItem('token'); // Token'ı localStorage'dan alıyoruz
-      if (!token) {
-        alert('Lütfen Giriş Yapın');
-        return;
-      }
-
-      try {
-        const response = await axios.get('http://localhost:5000/api/user/profile', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-        setUser(response.data); // Kullanıcı bilgilerini state'e kaydediyoruz
-      } catch (error) {
-        console.error("Error fetching profile:", error.response ? error.response.data : error.message);
-        alert('Error fetching profile: ' + error.response.data.message);
-      }
-    };
-
-    fetchUserProfile();
+    // Burada backend'den profil bilgisi alınıp setUser ile ayarlanabilir
+    setUser({
+      name: 'BayStranges',
+      email: 'baystranges@example.com',
+    });
   }, []);
 
   return (
     <div>
+      <h1>Profil Bilgileri</h1>
       {user ? (
-        <div>
-          <h2>Profil</h2>
-          <p><strong>Kullanıcı Adı:</strong> {user.username}</p>
-          <p><strong>Email:</strong> {user.email}</p>
-        </div>
+        <>
+          <p>Ad: {user.name}</p>
+          <p>Email: {user.email}</p>
+        </>
       ) : (
-        <p>Profil Yükleniyor Lütfen Bekleyiniz...</p>
+        <p>Profil yükleniyor...</p>
       )}
     </div>
   );
-};
+}
 
 export default Profile;

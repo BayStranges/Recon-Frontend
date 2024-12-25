@@ -1,44 +1,38 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // useNavigate kullanarak yönlendirme
 
-const Login = () => {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // useNavigate hook'u yönlendirme için kullanılır
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-      alert(response.data.message);
-      localStorage.setItem('token', response.data.token); // JWT'yi localStorage'a kaydediyoruz.
-    } catch (error) {
-      alert('Login failed: ' + error.response.data.message);
-    }
+    
+    // Burada backend'e login isteği atılacak
+    // Eğer başarılı olursa, kullanıcıyı profile sayfasına yönlendiriyoruz
+    navigate('/profile');
   };
 
   return (
     <div>
-      <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <input
           type="email"
-          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
+          placeholder="E-posta"
         />
         <input
           type="password"
-          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          placeholder="Şifre"
         />
-        <button type="submit">Login</button>
+        <button type="submit">Giriş Yap</button>
       </form>
     </div>
   );
-};
+}
 
 export default Login;
