@@ -1,12 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Yönlendirme için Link kullanılır
+import './Home.css';
 
-function Home() {
+const Home = () => {
   return (
-    <div>
-      <h1>Ana Sayfaya Hoşgeldiniz!</h1>
-      <p>Uygulamanıza başlamak için giriş yapabilirsiniz.</p>
-      <Link to="/login">Giriş Yap</Link> {/* Login sayfasına yönlendiren link */}
+    <div className="home-container">
+      <div className="hero-section">
+        <h1 className="hero-title">Hoş Geldiniz!</h1>
+        <p className="hero-description">Uygulamanızın sunduğu harika özellikleri keşfedin. Hemen başlayın ve hayatınızı kolaylaştırın.</p>
+        <button className="cta-btn">Başlayın</button>
+      </div>
+
+      <div className="features-section">
+        <h2 className="section-title">Özellikler</h2>
+        <div className="feature-cards">
+          <div className="feature-card">
+            <h3>Kolay Erişim</h3>
+            <p>Uygulamayı her yerden kolayca erişebilir ve kullanabilirsiniz.</p>
+          </div>
+          <div className="feature-card">
+            <h3>Gelişmiş Güvenlik</h3>
+            <p>Verilerinizin güvenliği bizim için öncelikli. Güçlü güvenlik önlemleri ile korunur.</p>
+          </div>
+          <div className="feature-card">
+            <h3>Hızlı ve Verimli</h3>
+            <p>İşlerinizi hızlı bir şekilde halledebilir, zaman kazanabilirsiniz.</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-section">
+        <p className="footer-text">2024 © Uygulamanızın Adı. Tüm hakları saklıdır.</p>
+      </div>
     </div>
   );
 }
