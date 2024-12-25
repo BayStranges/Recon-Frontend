@@ -1,113 +1,85 @@
-/* Genel stil */
+/* Genel Body ve HTML stil ayarları */
 body {
-  background-color: #f1f1f1;
-  font-family: 'Arial', sans-serif;
-}
-
-/* Kayıt formu kutusu */
-.register-container {
-  width: 100%;
-  max-width: 450px;
-  margin: 100px auto;
-  padding: 30px;
-  border-radius: 15px;
-  background: rgba(0, 0, 0, 0.6); /* Yarı saydam arka plan */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  color: #fff;
-  text-align: center;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Başlık */
-h2 {
-  font-size: 28px;
-  color: #fff;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-/* Input grupları */
-.input-group {
-  margin-bottom: 20px;
-}
-
-.input-group label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 5px;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* Input alanları */
-.input-group input {
-  width: 100%;
-  padding: 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  margin-top: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  box-sizing: border-box;
-  transition: background-color 0.3s ease;
-}
-
-.input-group input:focus {
-  background-color: rgba(255, 255, 255, 0.2);
-  outline: none;
-}
-
-/* Başarı ve hata mesajları */
-.error-message {
-  color: #e74c3c;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.success-message {
-  color: #2ecc71;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-/* Kayıt Ol butonu */
-.submit-btn {
-  width: 100%;
-  padding: 15px;
-  font-size: 18px;
+  font-family: Arial, sans-serif;
+  background-color: #2f3136; /* Koyu gri arka plan */
   color: white;
-  background-color: #3498db; /* Canlı mavi */
-  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.register-box {
+  background-color: #36393f; /* Koyu gri kutu arka planı */
+  padding: 40px;
   border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: #2980b9;
-}
-
-/* Giriş Yap linki */
-.login-link {
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   text-align: center;
+}
+
+h2 {
+  color: #ff6f61; /* Kırmızı renk */
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: #2f3136;
+  color: white;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #bbb;
+}
+
+button {
+  background-color: #ff6f61; /* Kırmızı buton */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #ff4e42; /* Kırmızı rengin daha koyusu */
+}
+
+.error-message {
+  color: #ff4e42; /* Hata mesajı kırmızı */
+  margin-top: 10px;
+}
+
+.login-link {
   margin-top: 20px;
+  color: #bbb;
 }
 
 .login-link a {
-  color: #3498db;
+  color: #ff6f61; /* Kırmızı renkli giriş linki */
   text-decoration: none;
-  font-size: 16px;
 }
 
 .login-link a:hover {
   text-decoration: underline;
-}
-
-/* Etkileşimli efektler */
-.register-container:hover {
-  transform: translateY(-10px); /* Hafif hareket efekti */
-}
-
-.register-container:active {
-  transform: translateY(2px); /* Tıklama etkisi */
 }
