@@ -29,7 +29,7 @@ const Home = () => {
       </div>
 
       <div className="footer-section">
-        <p className="footer-text">2024 © Uygulamanızın Adı. Tüm hakları saklıdır.</p>
+        <p className="footer-text">2024 © Recon. Tüm hakları saklıdır.</p>
       </div>
     </div>
   );
